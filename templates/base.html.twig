@@ -14,9 +14,17 @@
 <body>
 {% block header %}
     <nav class="navbar navbar-dark bg-dark sticky-top">
-        <a href="{{ path('home') }}" class="navbar-brand">
-            Happy Shop
-        </a>
+        {# ... #}
+        <div class="navbar-nav">
+            <div class="form-group">
+                <a href="{{ path('home') }}" class="btn btn-light">
+                    Products
+                </a>
+                <a href="{{ path('cart') }}" class="btn btn-light">
+                    Cart
+                </a>
+            </div>
+        </div>
     </nav>
 {% endblock %}
 

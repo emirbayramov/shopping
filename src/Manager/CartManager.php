@@ -5,6 +5,7 @@ namespace App\Manager;
 use App\Entity\Order;
 use App\Factory\OrderFactory;
 use App\Storage\CartSessionStorage;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class CartManager
@@ -23,17 +24,25 @@ class CartManager
     private $cartFactory;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
      * CartManager constructor.
      *
      * @param CartSessionStorage $cartStorage
      * @param OrderFactory $orderFactory
+     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         CartSessionStorage $cartStorage,
-        OrderFactory $orderFactory
+        OrderFactory $orderFactory,
+        EntityManagerInterface $entityManager
     ) {
         $this->cartSessionStorage = $cartStorage;
         $this->cartFactory = $orderFactory;
+        $this->entityManager = $entityManager;
     }
 
     /**
